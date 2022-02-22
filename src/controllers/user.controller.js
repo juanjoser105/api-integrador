@@ -3,14 +3,16 @@ import Role from "../models/Role";
 
 export const createUser = async (req, res) => {
   try {
-    const { username, email, password, roles } = req.body;
+    const { nombre, correo, cargo, identificacion, password, roles } = req.body;
 
     const rolesFound = await Role.find({ name: { $in: roles } });
 
     // creating a new User
     const user = new User({
-      username,
-      email,
+      nombre, 
+      correo, 
+      cargo, 
+      identificacion, 
       password,
       roles: rolesFound.map((role) => role._id),
     });
@@ -23,9 +25,12 @@ export const createUser = async (req, res) => {
 
     return res.status(200).json({
       _id: savedUser._id,
-      username: savedUser.username,
-      email: savedUser.email,
-      roles: savedUser.roles,
+      nombre: savedUser.nombre, 
+      correo: savedUser.correo, 
+      cargo: savedUser.cargo, 
+      identificacion: savedUser.identificacion, 
+      password: savedUser.identificacion, 
+      roles: savedUser.roles
     });
   } catch (error) {
     console.error(error);

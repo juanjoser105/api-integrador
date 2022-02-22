@@ -1,11 +1,10 @@
-import mongoose from "mongoose";
 import config from "./config";
+import mongoose from "mongoose";
 
-mongoose
-  .connect(config.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then((db) => console.log(`DB is connected`))
-  .catch((err) => console.log(err));
+mongoose.connect("mongodb://localhost/reportesdb", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+      })
+      .then((db) => console.log(`DB is connected`))
+      .catch((err) => console.log(err));

@@ -7,11 +7,13 @@ import config from "../config";
 export const signUp = async (req, res) => {
   try {
     // Getting the Request Body
-    const { username, email, password, roles } = req.body;
+    const { nombre, correo, cargo, identificacion, password, roles } = req.body;
     // Creating a new User Object
     const newUser = new User({
-      username,
-      email,
+      nombre, 
+      correo, 
+      cargo, 
+      identificacion, 
       password: await User.encryptPassword(password),
     });
 
@@ -42,7 +44,7 @@ export const signUp = async (req, res) => {
 export const signin = async (req, res) => {
   try {
     // Request body email can be an email or username
-    const userFound = await User.findOne({ email: req.body.email }).populate(
+    const userFound = await User.findOne({ correo: req.body.correo }).populate(
       "roles"
     );
 

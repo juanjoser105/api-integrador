@@ -3,13 +3,22 @@ import bcrypt from "bcryptjs";
 
 const productSchema = new Schema(
   {
-    username: {
+    nombre: {
       type: String,
-      unique: true,
+      required: true,
     },
-    email: {
+    correo: {
       type: String,
       unique: true,
+      required: true,
+    },
+    cargo: {
+      type: String,
+      required: true,
+    },
+    identificacion: {
+      type: String,
+      required: true,
     },
     password: {
       type: String,
